@@ -1,0 +1,107 @@
+<div class="row">
+  <!-- Theater List -->
+  <div class="col-md-6 mb-4">
+    <div class="card rounded shadow m-4 p-4 h-100">
+      <h5 class="mb-4">🎭 Your Theaters</h5>
+
+      <ng-container *ngIf="TheaterList?.length; else noTheaters">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let theater of TheaterList">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1 fw-semibold">🎬 {{ theater?.name }}</h6>
+                <p class="mb-0 text-muted">Screens: {{ theater?.screenCount }}</p>
+              </div>
+              <button (click)="editTheater(theater, $event)" class="btn btn-sm btn-outline-primary">
+                ✏️ Edit
+              </button>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #noTheaters>
+        <div class="alert alert-secondary mt-3" role="alert">
+          You have not added any theaters yet.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Edit Theater -->
+  <div *ngIf="selectedTheater.id !== 0" class="col-md-6 mb-4">
+    <div class="card rounded shadow m-4 p-4 h-100">
+      <h5 class="mb-4">🔧 Update Screen</h5>
+
+      <form #editForm="ngForm" novalidate>
+        <!-- Theater Name -->
+        <div class="mb-3">
+          <label for="TheaterName" class="form-label fw-bold">Theater Name</label>
+          <input
+            class="form-control"
+            disabled
+            type="text"
+            id="TheaterName"
+            name="TheaterName"
+            [(ngModel)]="selectedTheater.theaterName"
+          />
+        </div>
+
+        <!-- Select Screen -->
+        <div class="mb-3">
+          <label for="screenSelect" class="form-label fw-bold">Select Screen to Update</label>
+          <ng-select
+            id="screenSelect"
+            name="screenSelect"
+            [(ngModel)]="selectedScreenId"
+            (change)="onScreenChange()"
+            [items]="selectedTheater.screens"
+            bindLabel="label"
+            bindValue="id"
+            [virtualScroll]="true"
+            [searchable]="true"
+            placeholder="Choose screen"
+          >
+          </ng-select>
+        </div>
+
+        <!-- Update Rows -->
+        <div class="mb-3" *ngIf="selectedScreen">
+          <label for="rows" class="form-label">Number of Rows</label>
+          <ng-select
+            id="rows"
+            name="rows"
+            [items]="numbers"
+            [(ngModel)]="selectedScreen.rows"
+            [virtualScroll]="true"
+            [searchable]="true"
+            placeholder="Select number of rows"
+          >
+          </ng-select>
+        </div>
+
+        <!-- Update Columns -->
+        <div class="mb-3" *ngIf="selectedScreen">
+          <label for="columns" class="form-label">Number of Columns</label>
+          <ng-select
+            id="columns"
+            name="columns"
+            [items]="numbers"
+            [(ngModel)]="selectedScreen.columns"
+            [virtualScroll]="true"
+            [searchable]="true"
+            placeholder="Select number of columns"
+          >
+          </ng-select>
+        </div>
+
+        <!-- Update Button -->
+        <div class="text-end mt-4">
+          <button (click)="updateSelectedTheater()" class="btn btn-success">
+            ✅ Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

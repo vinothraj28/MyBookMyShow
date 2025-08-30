@@ -1,0 +1,87 @@
+<div class="container vh-100 overflow-auto py-4">
+    <h4 class="fw-bold mb-4">🎬 New Movie Collections</h4>
+
+    <div class="row g-4">
+        <!-- Movie List Column -->
+        <div [class.col-md-6]="addingShowTime" [class.col-12]="!addingShowTime">
+            <div class="movie-carousel d-flex pb-3 overflow-auto" [ngClass]="{
+          'flex-row'  :!addingShowTime,
+          'flex-column': addingShowTime
+        }" style="scroll-snap-type: x mandatory; gap: 1rem; max-height: 80vh;">
+                <div *ngFor="let movie of movies" class="movie-card flex-shrink-0"
+                    style="width: 200px; scroll-snap-align: start;">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img [src]="movieImgUrl[movie.id]" class="card-img-top" alt="{{ movie.name }}"
+                            style="height: 250px; object-fit: cover;" />
+                        <div class="card-body text-center">
+                            <h6 class="card-title mb-1">{{ movie.name }}</h6>
+                            <div><small class="text-muted">{{ movie.rating }} | {{ movie.language }}</small></div>
+                            <button class="btn btn-sm btn-outline-primary mt-2" (click)="addShowTime(movie)">➕ Add
+                                Showtime</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Showtime Form Column -->
+        <div *ngIf="addingShowTime" class="col-md-6 d-flex justify-content-center">
+            <div class="w-100">
+                <h4 class="text-center mb-3">🎟️ Add ShowTimes</h4>
+
+                <div class="card p-3 shadow-sm">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-auto">
+                            <img [src]="movieImgUrl[showTimeMovie!.id]" alt="{{ showTimeMovie!.name }}"
+                                class="img-fluid rounded" style="height: 120px; width: 120px; object-fit: cover;" />
+                        </div>
+                        <div class="col">
+                            <h6 class="mb-1">{{ showTimeMovie!.name }}</h6>
+                            <small class="text-muted">{{ showTimeMovie!.rating }} | {{ showTimeMovie!.language }}</small>
+                        </div>
+                    </div>
+
+                    <form [formGroup]="showTimeForm" (ngSubmit)="registerShowTime()" novalidate>
+                        <!-- Placeholder for your actual showtime form -->
+                        <div class="mb-2 mt-2">
+                            <label class="form-label" for="theaterName">Select the theater :</label>
+                            <ng-select id="theaterName" name="theaterName" [items]="TheaterList" bindLabel="name" bindValue="id"
+                                (change)="getScreenOptions($event)" formControlName="theaterId">
+                            </ng-select>
+                        </div>
+                        
+                        <div *ngIf="selectedTheater?.screens" class="mb-3">
+                            <label class="form-field" for="screen">Select the screen :</label>
+                            <ng-select id="screen" [items]="selectedTheater.screens" bindValue="id" bindLabel="label"
+                                (change)="getAvaiableDays($event)" formControlName="screenId">           
+                            </ng-select>       
+                        </div>
+                        
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" [matDatepickerFilter]="dateFilter" (dateChange)="isDateValid($event)"
+                                formControlName="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        
+                        <p *ngIf="!dateError">Selected: {{ selectedDate | date:'fullDate' }}</p>
+                        <p *ngIf="dateError" class="text-warning">{{dateError}}</p>
+                        <div *ngIf="showTimeSlots" class="mb-3">
+                            <label class="form-label" for="showSlots">Select a slot</label>
+                            <ng-select id="showSlots" [items]="showTimeSlots" bindValue="label" bindLabel="label" [searchable]="true"
+                                [virtualScroll]="true" formControlName="showSlots" (change)="selectShowTime($event)">                        
+                            </ng-select>
+                        </div>
+                        <div *ngIf="!dateError" class="mb-3">
+                            <button type="submit" [disabled]="!showTimeForm.valid" class="btn btn-primary">Add Show</button>
+                        </div>
+                    </form>
+                    
+                </div>
+
+              
+            </div>
+        </div>
+    </div>
+</div>

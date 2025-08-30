@@ -1,0 +1,19 @@
+.movie-carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+}
+
+.movie-carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.movie-card {
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}

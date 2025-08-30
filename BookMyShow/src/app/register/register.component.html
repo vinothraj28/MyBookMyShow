@@ -1,0 +1,57 @@
+<div class="min-vh-100 min-vw-100 bg-gradient-blue-teal position-relative">
+
+  <div class="container-fluid position-relative d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card text-dark shadow p-4 m-4 rounded-4" style="backdrop-filter: blur(20px);">
+        <h3 class="text-center text-muted">Register</h3>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()" novalidate>
+          <div class="mb-2">
+            <label for="username" class="form-label">Username</label>
+            <input id="username" type="text" class="form-control border-dark text-dark rounded-3" formControlName="username" placeholder="you@example.com" autocomplete="username">
+            <span class="text-warning" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">username is required</span>
+          </div>
+
+          <div class="mb-2">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control border-dark text-dark  rounded-3" formControlName="email" placeholder="name@example.com" autocomplete="email">
+            <span class="text-warning" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">email is required</span>
+          </div>
+
+          <div class="mb-2">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" class="form-control border-dark text-dark rounded-3" formControlName="password" placeholder="Your Password" autocomplete="new-password">
+            <span class="text-warning" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">password is required</span>
+          </div>
+
+          <div class="mb-2">
+            <label for="rePassword" class="form-label">Re-Enter Password</label>
+            <input id="rePassword" type="password" class="form-control border-dark text-dark rounded-3" formControlName="rePassword" placeholder="Your Password" autocomplete="new-password">
+            <span class="text-warning" *ngIf="registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.invalid ">rePassword is required</span>
+            <span class="text-warning" *ngIf="registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.value && registerForm.get('rePassword')?.value !== registerForm.get('password')?.value">rePassword is different</span>
+          </div>
+
+          <div class="mb-2">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input id="dob" type="date" class="form-control border-dark text-dark rounded-3" formControlName="dob" autocomplete="bday">
+            <span class="text-warning" *ngIf="registerForm.get('dob')?.touched && registerForm.get('dob')?.invalid">DOB is required</span>
+          </div>
+
+          <div class="mb-2">
+            <label for="country">Country</label>
+            <select id="country" class="form-control border-dark text-dark rounded-3" formControlName="country" >
+              <option value="" disabled selected >Select a country</option>
+              @for (country of countries; track $index) {
+                <option [value]="country">{{country}}</option>
+              }
+            </select>
+            <span class="text-warning" *ngIf="registerForm.get('country')?.touched && registerForm.get('country')?.invalid">country is required</span>
+          </div>
+          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-danger w-100">Register</button>
+        </form>
+        <a class="text-dark" routerLink="/login">Go to Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+

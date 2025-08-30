@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <!-- Theater Form Card -->
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow rounded p-4 m-4">
+            <form [formGroup]="movieForm" (ngSubmit)="registerMovie()" novalidate>
+                <h1 class="mb-3">Register Movie</h1>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name of the Movie</label>
+                    <input class="form-control" type="text" name="name" id="name" formControlName="name" placeholder="Enter the name of the movie"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="language">Language of the Movie</label>
+                    <ng-select
+                    [items]="Languages"
+                    [searchable]="true"
+                    [virtualScroll]="true"
+                    formControlName="language"
+                    >  
+                    </ng-select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="movieHrs">Movie Run Time (in Minutes)</label>
+                    <input type="number" class="form-control" name="movieHrs" id="movieHrs" formControlName="movieHrs" placeholder="Enter the movieHrs of the movie"/>
+                </div>
+                 <div class="mb-3">
+                    <label class="form-label" for="rating">Rating of the Movie</label>
+                    <ng-select
+                    [items]="Ratings"
+                    [searchable]="true"
+                    [virtualScroll]="true"
+                    formControlName="rating"
+                    >  
+                    </ng-select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Movie Image:</label>
+                    <input type="file" class="form-control" id="image" name="image" accept="image/*" (change)="onFileSelected($event)" />    
+                </div>
+                <button class="btn btn-primary" type="submit">
+                    Register
+                </button>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>

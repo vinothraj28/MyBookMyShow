@@ -1,0 +1,11 @@
+<div
+      *ngIf="toast"
+      class="position-fixed bottom-0 end-0 m-4 p-3 rounded shadow text-white toast-animation"
+      [ngClass]="{
+        'bg-success': toast.type === 'success',
+        'bg-danger': toast.type === 'danger',
+        'bg-info': toast.type === 'info'
+      }"
+    >
+      {{ toast.message }}
+  </div>

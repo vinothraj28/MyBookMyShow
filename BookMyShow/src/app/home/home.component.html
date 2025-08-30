@@ -1,0 +1,62 @@
+<div id="HomeContainer" class="container my-5">
+  <section class="row align-items-center bg-light rounded p-2 shadow">
+
+    <!-- Left Text Column -->
+    <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+      <h1 class="display-5 fw-bold">Book Your Movie Tickets</h1>
+      <p class="lead">Select soon-releasing movies and reserve your seat.</p>
+      <a href="#movies" class="btn btn-primary btn-lg mt-3">Explore Now</a>
+    </div>
+
+    <!-- Right Carousel Column -->
+    <div class="col-md-6 text-center">
+      <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner rounded shadow">
+
+          
+          <div class="carousel-item active">
+            <img src="assets/Interstellar.jpg" class="d-block w-100" alt="Movie 1" height="200">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/TomCruise.jpg" class="d-block w-100" alt="Movie 2" height="200">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Chennai Express.jpg" class="d-block w-100" alt="Movie 2" height="200">
+          </div>
+          
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+  </section>
+  <div class="container m-4">
+    <!-- Movie List Column -->
+    <div *ngIf="movies" class="col-12">
+      <div class="movie-carousel d-flex pb-3 overflow-auto">
+        <div *ngFor="let movie of movies" class="movie-card flex-shrink-0">
+          <div class="card h-100 border-0 shadow">
+            <img [src]="movieImgUrl[movie.id]" class="card-img-top" alt="{{ movie.name }}"
+              style="height: 250px; object-fit: cover;" />
+            <div class="card-body text-center">
+              <h6 class="card-title mb-1">{{ movie.name }}</h6>
+              <small class="text-muted d-block">{{ movie.rating }} | {{ movie.language }}</small>
+              <button class="btn btn-sm btn-outline-primary mt-2" (click)="bookMovie(movie)">Book Tickets</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

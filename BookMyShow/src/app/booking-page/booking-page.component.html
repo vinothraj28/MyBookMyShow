@@ -1,0 +1,121 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <!-- 🎬 Movie Details Card -->
+        <div *ngIf="movie" class="  p-4 col-lg-6 col-md-8 col-sm-12">
+            <div class="h-100 border-0 rounded-4 overflow-hidden">
+               
+                <div class="flex-column m-4">
+                    <h1 class="fw-bold mb-2">{{ movie.name }}</h1>
+                    <p class="text-muted mb-1">{{ movie.language }} | {{ movie.movieHrs }} hrs</p>
+                    <p class="mb-3"><strong>Rating:</strong> ⭐ {{ movie.rating }}</p>
+                </div>
+          
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-8 col-12 movie-image-container" >
+           
+                <div class="gradient-overlay-left"></div>
+                <img [src]="movieImgUrl[movie.movieImageId]" class="movie-poster" alt="{{movie.name}}">
+                <div class="gradient-overlay-bottom"></div>
+            
+        </div>
+       
+    </div>
+    <div class="date-selector border rounded-4 p-3">
+        <div class="fw-semibold mb-3">📅 Select a Date</div>
+    
+        <div class="d-flex align-items-center">
+            <!-- Left Arrow -->
+            <button [disabled]="!canScrollLeft" (click)="scrollDateCaraousel('left')" class="btn arrow-btn me-2">
+                ‹
+            </button>
+    
+            <!-- Scrollable Date Pills -->
+            <div #dateCarousel class="date-caraousel flex-grow-1">
+                <div class="show-dates">
+                    <button [ngClass]="{selected : selectedDate[entry.key]}" *ngFor="let entry of showDates | keyvalue:compareDates" class="btn date-pill me-2"
+                        (click)="selectDate(entry.value);selectedShowNumber={}; selectedDate ={}; selectedDate[entry.key]=true; canScrollBottom = true">
+                        {{ entry.key }}
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Right Arrow -->
+            <button [disabled]="!canScrollRight" (click)="scrollDateCaraousel('right')" class="btn arrow-btn ms-2">
+                ›
+            </button>
+        </div>
+    </div>
+
+<div *ngIf="showTimes && (showTimes | keyvalue).length > 0" class="p-4 border rounded shadow-sm bg-light">
+    <h5 class="mb-4 fw-bold">🎬 Select a Showtime</h5>
+    <div class="d-flex flex-column gap-4">
+        <div *ngFor="let shows of showTimes | keyvalue" class="p-3 border rounded bg-white shadow-sm">
+            <!-- Theater Header -->
+            <div class="mb-2 fw-semibold text-primary">
+                🎭 Theater: {{ shows.key }}
+            </div>
+            <!-- ShowTime Buttons -->
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <button *ngFor="let show of shows.value" class="btn time-btn px-3 py-2" [ngClass]="{
+                                'btn-primary text-white': selectedShowNumber[show.id],
+                                'btn-outline-primary': !selectedShowNumber[show.id]
+                              }" (click)="bookSeat(show)">
+                        {{ show.showStartTime }} - {{ show.showEndTime }}
+                    </button>     
+                </div>  
+            </div>
+        </div>
+    </div>    
+</div>
+<div *ngIf="seatRows && (seatRows | keyvalue).length > 0" class="col-12 mt-5 d-flex flex-column align-items-center">
+
+    <div id="#seat-wrapper">
+        <!-- Screen -->
+        <div #screen class="screen text-center mb-4 py-2 rounded bg-dark text-white fw-bold shadow-sm">
+            SCREEN
+        </div>
+        
+        <!-- Seat rows -->
+        <div #seatContainer>
+            <div *ngFor="let row of seatRows | keyvalue" class="d-flex justify-content-center align-items-center mb-2 gap-2">
+        
+                <!-- Row label -->
+                <span class="row-label fw-semibold me-3">{{ row.key }}</span>
+        
+                <!-- Seats -->
+                <div class="d-flex gap-2">
+                    <button *ngFor="let seat of row.value" [disabled]="seat.booked" [ngClass]="{
+                            'seat': true,
+                            'booked': seat.booked,
+                            'selected': isSelectedSeat(seat)
+                          }" (click)="toggleSeatSelection(seat)" title="Seat {{ seat.seatNumber }}">
+                        <svg class="seat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                            <!-- Backrest -->
+                            <rect x="12" y="4" width="40" height="28" rx="6" class="backrest" />
+                            <!-- Seat cushion -->
+                            <rect x="16" y="32" width="32" height="16" rx="4" class="cushion" />
+                            <!-- Armrests -->
+                            <rect x="8" y="20" width="6" height="28" rx="3" class="armrest" />
+                            <rect x="50" y="20" width="6" height="28" rx="3" class="armrest" />
+                        </svg>
+                        <span class="seat-number">{{ seat.seatNumber.slice(1) }}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div *ngIf="selectedSeats.length > 0" class="d-flex">
+    <div class="card p-4 m-4 shadow">
+        <div>Seats Selected: {{ getSelectedSeats()}}</div>
+        <div class="m-2 d-flex flex-row">
+            <label for="bookingUserName">User Name :</label>
+            <input class="form-control" type="text" id="bookingUserName" [(ngModel)]="user.userName"/>
+        </div> 
+        <button class="btn btn-primary" (click)="bookTickets()"> Book Tickets</button>
+    </div>
+</div>     
+</div>
+<div #bottomAnchor></div>
+</div>

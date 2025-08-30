@@ -1,0 +1,49 @@
+<div class="vh-100 vw-100 position-relative overflow-hidden">
+
+  <!-- Dark Overlay -->
+  <div class="position-absolute w-100 h-100 bg-gradient-blue-teal opacity-75"></div>
+
+  <!-- Split layout -->
+  <div class="container-fluid h-100 position-relative z-1">
+    <div class="row h-100">
+      
+      <!-- Left: Logo + Branding -->
+      <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-dark text-center p-4">
+        <img src="https://img.freepik.com/free-vector/movie-time-neon-sign-sign_24908-55540.jpg?w=900&t=st=1689283859~exp=1689284459~hmac=3c087d9c750b5cf90384f17715447600bfcc9265b0dd88f521df4e126dfd0b42"
+         alt="Cinema Logo" style="width: 200px;">
+        <h2 class="mt-4">Welcome to MoviePass</h2>
+        <p class="lead">Book your favorite movies across the globe 🌍</p>
+      </div>
+
+      <!-- Right: Login Form -->
+      <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <div class="card bg-dark text-white shadow-lg p-5 rounded-4" style="backdrop-filter: blur(20px); width: 100%; max-width: 400px;">
+          <h3 class="text-center mb-4">Login</h3>
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input type="email" class="form-control bg-white text-dark border-0" formControlName="username" placeholder="you@example.com">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control bg-white text-dark border-0" formControlName="password" placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="btn btn-danger w-100">Login</button>
+
+            <div *ngIf="apiError" class="alert alert-danger mt-3">
+              {{ apiError }}
+            </div>
+
+            <div class="text-center mt-4">
+              <a class="text-light" href="#">Forgot password?</a><br>
+              <a class="text-warning" routerLink="/register">Create a new account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

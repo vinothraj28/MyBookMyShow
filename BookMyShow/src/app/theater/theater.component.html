@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <!-- Theater Form Card -->
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow rounded m-4 p-4">
+        <form [formGroup]="TheaterForm" (ngSubmit)="addTheater()" novalidate>
+          
+          <!-- Theater Name -->
+          <div class="mb-3">
+            <label for="theaterName" class="form-label fw-bold">Theater Name</label>
+            <input
+              id="theaterName"
+              type="text"
+              class="form-control"
+              formControlName="Name"
+              placeholder="e.g., Galaxy Cinemas"
+            />
+            <div class="form-text text-danger" *ngIf="TheaterForm.get('Name')?.touched && TheaterForm.get('Name')?.invalid">
+              Name is required.
+            </div>
+          </div>
+
+          <!-- Screen Count -->
+          <div class="mb-4">
+            <label for="screenCount" class="form-label fw-bold">Number of Screens</label>
+            <ng-select
+              [items]="numbers"
+              formControlName="screenCount"
+              bindLabel="label"
+              bindValue="value"
+              [virtualScroll]="true"
+              [searchable]="true"
+              placeholder="Select number of screens">
+            </ng-select>
+          </div>
+
+          <!-- Screens Form Array -->
+          <div formArrayName="screens" *ngIf="screens.length" class="mb-3">
+            <ng-container *ngIf="getScreenGroup(currentScreenIndex) as currentGroup">
+              <div [formGroup]="currentGroup" class="border rounded p-4 bg-light">
+                <h5 class="mb-3">Screen {{ currentScreenIndex + 1 }} of {{ screens.length }}</h5>
+
+                <!-- Screen Name -->
+                <div class="mb-3">
+                  <label class="form-label">Screen Name</label>
+                  <input type="text" class="form-control" formControlName="screenName" placeholder="e.g., Screen 1" />
+                </div>
+
+                <!-- Rows & Columns -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Rows</label>
+                    <input type="number" class="form-control" formControlName="rows" min="1" />
+                    <div class="form-text text-danger" *ngIf="screens.at(currentScreenIndex).get('rows')?.touched && screens.at(currentScreenIndex).get('rows')?.invalid">
+                      <div *ngIf="screens.at(currentScreenIndex).get('rows')?.errors?.['required']">Rows is required.</div>
+                      <div *ngIf="screens.at(currentScreenIndex).get('rows')?.errors?.['min']">Minimum is 1.</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Columns</label>
+                    <input type="number" class="form-control" formControlName="columns" min="1" />
+                    <div class="form-text text-danger" *ngIf="screens.at(currentScreenIndex).get('columns')?.touched && screens.at(currentScreenIndex).get('columns')?.invalid">
+                      <div *ngIf="screens.at(currentScreenIndex).get('columns')?.errors?.['required']">Columns is required.</div>
+                      <div *ngIf="screens.at(currentScreenIndex).get('columns')?.errors?.['min']">Minimum is 1.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                  <button type="button" class="btn btn-outline-secondary" (click)="previousScreen()" [disabled]="currentScreenIndex === 0">
+                    ← Previous
+                  </button>
+                  <button type="button" class="btn btn-outline-primary" (click)="nextScreen()" *ngIf="currentScreenIndex < screens.length - 1">
+                    Next →
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- Submit -->
+          <div class="mt-4 text-end">
+            <button type="submit" class="btn btn-success" [disabled]="!TheaterForm.valid">
+              🎬 Add Theater
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+/* Blue to Teal */
+.bg-gradient-blue-teal {
+  background: linear-gradient(135deg, #767777, hsl(0, 9%, 93%));
+}
