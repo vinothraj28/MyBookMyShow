@@ -23,10 +23,11 @@ stages:
       - job: BuildJava
         steps:
           # Use Java 21 (Temurin distribution recommended)
-          - task: UseJavaVersion@1
-            inputs:
-              versionSpec: '$(java_version)'
-              distribution: 'temurin'
+        - task: JavaToolInstaller@0
+          inputs:
+            versionSpec: '21'
+            jdkArchitectureOption: 'x64'
+            jdkSourceOption: 'PreInstalled'
 
           # Build backend with Maven
           - task: Maven@3
