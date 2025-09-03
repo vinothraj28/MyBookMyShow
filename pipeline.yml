@@ -28,3 +28,49 @@ stages:
               versionSpec: '21'
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'PreInstalled'
+
+          # Build backend with Maven
+          - task: Maven@4
+            inputs:
+              mavenPomFile: 'movie/movie/pom.xml'
+              goals: 'clean package -DskipTests'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+
+          # Debug: check contents of target folder
+          - script: |
+              echo "Contents of target directory:"
+              ls -l movie/movie/target || echo "No target directory found"
+            displayName: "Verify backend build output"
+
+          # Publish backend artifact (JAR/WAR)
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: 'movie/movie/target/*.jar'
+              ArtifactName: 'springboot-app'
+              publishLocation: 'Container'
+
+  - stage: Build_Frontend
+    displayName: "Build Angular Frontend"
+    jobs:
+      - job: BuildAngular
+        steps:
+          # Use Node.js 22.14.0
+          - task: UseNode@1
+            inputs:
+              version: '$(node_version)'
+
+          # Install dependencies, lint, and build Angular
+          - script: |
+              cd BookMyShow
+              npm ci
+              npm run lint
+              npm run build -- --configuration production
+            displayName: "Build Angular"
+
+          # Publish frontend artifact (dist folder)
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: 'BookMyShow/dist'
+              ArtifactName: 'angular-app'
+              publishLocation: 'Container'
