@@ -32,7 +32,7 @@ stages:
           # Build backend with Maven
           - task: Maven@3
             inputs:
-              mavenPomFile: 'movie/pom.xml'
+              mavenPomFile: 'movie/movie/pom.xml'
               goals: 'clean install -DskipTests'
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
@@ -56,7 +56,7 @@ stages:
 
           # Install dependencies, lint, and build Angular
           - script: |
-              cd frontend
+              cd BookMyShow
               npm ci
               npm run lint
               npm run build -- --configuration production
