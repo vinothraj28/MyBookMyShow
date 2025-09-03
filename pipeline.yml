@@ -22,49 +22,9 @@ stages:
     jobs:
       - job: BuildJava
         steps:
-          # Use Java 21 (Temurin distribution recommended)
+          # Use Java 21
           - task: JavaToolInstaller@0
             inputs:
               versionSpec: '21'
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'PreInstalled'
-
-          # Build backend with Maven
-          - task: Maven@3
-            inputs:
-              mavenPomFile: 'movie/movie/pom.xml'
-              goals: 'clean install -DskipTests'
-              publishJUnitResults: true
-              testResultsFiles: '**/surefire-reports/TEST-*.xml'
-
-          # Publish backend artifact (JAR/WAR)
-          - task: PublishBuildArtifacts@1
-            inputs:
-              PathtoPublish: 'movie/movie/target/*.jar'
-              ArtifactName: 'springboot-app'
-              publishLocation: 'Container'
-
-  - stage: Build_Frontend
-    displayName: "Build Angular Frontend"
-    jobs:
-      - job: BuildAngular
-        steps:
-          # Use Node.js 22.14.0
-          - task: NodeTool@0
-            inputs:
-              versionSpec: '$(node_version)'
-
-          # Install dependencies, lint, and build Angular
-          - script: |
-              cd BookMyShow
-              npm ci
-              npm run lint
-              npm run build -- --configuration production
-            displayName: "Build Angular"
-
-          # Publish frontend artifact (dist folder)
-          - task: PublishBuildArtifacts@1
-            inputs:
-              PathtoPublish: 'BookMyShow/dist'
-              ArtifactName: 'angular-app'
-              publishLocation: 'Container'
