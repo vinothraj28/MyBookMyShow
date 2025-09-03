@@ -40,7 +40,7 @@ stages:
           # Publish backend artifact (JAR/WAR)
           - task: PublishBuildArtifacts@1
             inputs:
-              PathtoPublish: 'movie/target/*.jar'
+              PathtoPublish: 'movie/movie/target/*.jar'
               ArtifactName: 'springboot-app'
               publishLocation: 'Container'
 
