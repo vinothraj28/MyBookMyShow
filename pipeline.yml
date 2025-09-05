@@ -77,7 +77,7 @@ stages:
 
           - script: |
               echo "Listing contents of downloaded artifact:"
-              ls -R $(Pipeline.Workspace)/angular-app
+              ls -R $(Pipeline.Workspace)/
             displayName: "Debug artifact folder structure"
 
   - stage: Deploy_Frontend
