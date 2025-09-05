@@ -94,7 +94,7 @@ stages:
           # Deploy using AzureStaticWebApp task
           - task: AzureStaticWebApp@0
             inputs:
-              app_location: '$(Pipeline.Workspace)/angular-app'  # folder containing index.html
+              app_location: 'angular-app'  # folder containing index.html
               output_location: ''                               # Angular already built
               skip_app_build: true                              # skip building again
               azure_static_web_apps_api_token: $(SWA_DEPLOY_TOKEN)
