@@ -85,8 +85,7 @@ stages:
           - task: DownloadPipelineArtifact@2
             inputs:
               artifact: 'angular-app'
-              path: '$(Pipeline.Workspace)/BookMyShow'
-
+              path: '$(Pipeline.Workspace)/angular-app'
           - script: |
               echo "Listing contents of downloaded artifact:"
               ls -R $(Pipeline.Workspace)/
@@ -95,7 +94,7 @@ stages:
           # Deploy using AzureStaticWebApp task
           - task: AzureStaticWebApp@0
             inputs:
-              app_location: '$(Pipeline.Workspace)/angular-app/browser'  # folder containing index.html
+              app_location: '$(Pipeline.Workspace)/angular-app'  # folder containing index.html
               output_location: ''                               # Angular already built
               skip_app_build: true                              # skip building again
               azure_static_web_apps_api_token: $(SWA_DEPLOY_TOKEN)
