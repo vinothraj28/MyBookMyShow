@@ -85,7 +85,7 @@ stages:
           - task: DownloadPipelineArtifact@2
             inputs:
               artifact: 'angular-app'
-              path: '$(Pipeline.Workspace)/angular-app'
+              path: 'angular-app'
           - script: |
               echo "Listing contents of downloaded artifact:"
               ls -R $(Pipeline.Workspace)/
