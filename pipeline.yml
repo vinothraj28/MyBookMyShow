@@ -75,10 +75,7 @@ stages:
               ArtifactName: 'angular-app'
               publishLocation: 'Container'
 
-          - script: |
-              echo "Listing contents of downloaded artifact:"
-              ls -R $(Pipeline.Workspace)/
-            displayName: "Debug artifact folder structure"
+          
 
   - stage: Deploy_Frontend
     displayName: "Deploy Angular Frontend to SWA"
@@ -91,6 +88,11 @@ stages:
             inputs:
               artifact: 'angular-app'
               path: '$(Pipeline.Workspace)/BookMyShow'
+
+          - script: |
+              echo "Listing contents of downloaded artifact:"
+              ls -R $(Pipeline.Workspace)/
+            displayName: "Debug artifact folder structure"
 
           # Deploy using AzureStaticWebApp task
           - task: AzureStaticWebApp@0
