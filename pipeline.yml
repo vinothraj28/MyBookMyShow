@@ -75,6 +75,11 @@ stages:
               ArtifactName: 'angular-app'
               publishLocation: 'Container'
 
+          - script: |
+              echo "Listing contents of downloaded artifact:"
+              ls -R $(Pipeline.Workspace)/angular-app
+            displayName: "Debug artifact folder structure"
+
   - stage: Deploy_Frontend
     displayName: "Deploy Angular Frontend to SWA"
     dependsOn: Build_Frontend
