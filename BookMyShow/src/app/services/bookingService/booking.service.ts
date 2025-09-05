@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { movie } from '../../Interfaces/movie';
 
+
 @Injectable({
   providedIn: 'root'
 })

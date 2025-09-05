@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserserviceService } from '../user/userservice.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class TheaterService {
   http = inject(HttpClient);
   user = inject(UserserviceService);
 
-  
-  private theaterListUrl = 'http://localhost:8080/theater/list';
-  private theaterAddUrl = 'http://localhost:8080/theater/register';
-  private screenListUrl = 'http://localhost:8080/theater/{id}/screens';
-  private updateScreenUrl = 'http://localhost:8080/theater/screen/update';
+  private baseUrl = environment.apiUrl;
+  private theaterListUrl = `${this.baseUrl}/theater/list`;
+  private theaterAddUrl = `${this.baseUrl}/theater/register`;
+  private screenListUrl = `${this.baseUrl}/theater/{id}/screens`;
+  private updateScreenUrl = `${this.baseUrl}/theater/screen/update`;
 
   addTheater(data:{}):Observable<any>{
     return this.http.post(this.theaterAddUrl, data);
@@ -27,7 +28,7 @@ export class TheaterService {
 
   //get list of screens and their data
   getScreens(id: number):Observable<any>{
-    const url = `http://localhost:8080/theater/${id}/screens`;
+    const url = `${this.baseUrl}/theater/${id}/screens`;
     return this.http.get(url);
   }
 

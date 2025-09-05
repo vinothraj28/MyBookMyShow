@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, raceWith } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,10 @@ export class MovieService {
 
   constructor(private http : HttpClient ) { }
 
-  private registerUrl = 'http://localhost:8080/movies/register';
-  private moviesUrl = 'http://localhost:8080/movies/list'
-  private movieImageUrl = 'http://locaohost:8080/movies/image'
+  private baseUrl = environment.apiUrl;
+  private registerUrl = `${this.baseUrl}/movies/register`;
+  private moviesUrl = `${this.baseUrl}/movies/list`;
+  private movieImageUrl = `${this.baseUrl}/movies/image`;
 
   registerMovie(data:{}):Observable<any>{
     return this.http.post(this.registerUrl, data);
@@ -23,7 +25,7 @@ export class MovieService {
 
   getMovieImage(id:number):Observable<Blob>{
 
-    const url = `http://localhost:8080/movies/image/${id}`;
+    const url = `${this.baseUrl}/movies/image/${id}`;
     return this.http.get(url, {responseType:'blob'});
 
   }

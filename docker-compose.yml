@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: movie
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    image: eclipse-temurin:21-jdk-alpine
+    container_name: movie-backend
+    depends_on:
+      - db
+    working_dir: /app
+    volumes:
+      - ./movie/movie/target/movie-0.0.1-SNAPSHOT.jar:/app/app.jar   # map your built JAR
+    command: ["java", "-jar", "app.jar"]
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/movie
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+    ports:
+      - "8080:8080"
+
+  frontend:
+    image: nginx:alpine
+    container_name: angular-frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./BookMyShow/dist/book-my-show/browser:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro  # optional for custom config
+    ports:
+      - "4200:80"
+
+volumes:
+  postgres-data:
+
