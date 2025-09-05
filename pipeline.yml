@@ -71,7 +71,7 @@ stages:
           # Publish frontend artifact (dist folder)
           - task: PublishBuildArtifacts@1
             inputs:
-              PathtoPublish: 'BookMyShow/dist'
+              PathtoPublish: 'BookMyShow/dist/book-my-show/browser'
               ArtifactName: 'angular-app'
               publishLocation: 'Container'
 
