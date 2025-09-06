@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://<your-backend>.azurewebsites.net'
+  apiUrl: 'https://vinothrajbackend.gentlewater-d156676e.westeurope.azurecontainerapps.io/'
 };

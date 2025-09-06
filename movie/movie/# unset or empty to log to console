@@ -1,0 +1,26 @@
+2025-09-06T15:40:11.817+02:00  INFO 23696 --- [bookmyshow] [main] c.b.movie.BookmyshowApplicationTests     : Starting BookmyshowApplicationTests using Java 23.0.2 with PID 23696 (started by Karth in D:\My Learning Project\AzureProject\movie\movie)
+2025-09-06T15:40:11.819+02:00  INFO 23696 --- [bookmyshow] [main] c.b.movie.BookmyshowApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2025-09-06T15:40:14.293+02:00  INFO 23696 --- [bookmyshow] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-06T15:40:14.407+02:00  INFO 23696 --- [bookmyshow] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 9 JPA repository interfaces.
+2025-09-06T15:40:15.132+02:00  INFO 23696 --- [bookmyshow] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-06T15:40:15.332+02:00  INFO 23696 --- [bookmyshow] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-09-06T15:40:15.406+02:00  INFO 23696 --- [bookmyshow] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-06T15:40:16.187+02:00  INFO 23696 --- [bookmyshow] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-06T15:40:16.247+02:00  INFO 23696 --- [bookmyshow] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-06T15:40:16.932+02:00  INFO 23696 --- [bookmyshow] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@601d295
+2025-09-06T15:40:16.933+02:00  INFO 23696 --- [bookmyshow] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-06T15:40:17.430+02:00  INFO 23696 --- [bookmyshow] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-06T15:40:22.053+02:00  INFO 23696 --- [bookmyshow] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-06T15:40:22.838+02:00  INFO 23696 --- [bookmyshow] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-06T15:40:23.845+02:00  WARN 23696 --- [bookmyshow] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-06T15:40:24.510+02:00  INFO 23696 --- [bookmyshow] [main] c.b.movie.BookmyshowApplicationTests     : Started BookmyshowApplicationTests in 13.259 seconds (process running for 15.491)
+2025-09-06T15:40:26.243+02:00  INFO 23696 --- [bookmyshow] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-06T15:40:26.245+02:00  INFO 23696 --- [bookmyshow] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-06T15:40:26.249+02:00  INFO 23696 --- [bookmyshow] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,32 +1,12 @@
-version: "3.9"
-services:
-  db:
-    image: postgres:15
-    container_name: postgres-db
-    environment:
-      POSTGRES_DB: movie
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+# Use Java 21 JDK
+FROM eclipse-temurin:21-jdk-alpine
 
-  backend:
-    image: eclipse-temurin:21-jdk-alpine
-    container_name: movie-backend
-    depends_on:
-      - db
-    working_dir: /app
-    volumes:
-      - ./target/movie.jar:/app/app.jar   # map your built JAR
-    command: ["java", "-jar", "app.jar"]
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/movie
-      SPRING_DATASOURCE_USERNAME: myuser
-      SPRING_DATASOURCE_PASSWORD: mypassword
-    ports:
-      - "8080:8080"
+# Copy the built JAR
+ARG JAR_FILE=target/movie-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
 
-volumes:
-  postgres-data:
+# Expose the port
+EXPOSE 8080
+
+# Run the application
+ENTRYPOINT ["java","-jar","/app.jar"]

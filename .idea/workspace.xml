@@ -5,23 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a80ad5a1-5e0c-4404-9700-feb1dbd3cc5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BookMyShow/docker.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/movie/movie/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/services/bookingService/booking.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/services/bookingService/booking.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/services/loginService/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/services/loginService/login.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/services/movie/movie.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/services/movie/movie.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/services/showtimes/showtimes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/services/showtimes/showtimes.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/services/theaterServices/theater.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/services/theaterServices/theater.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/services/user/userservice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/services/user/userservice.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/bookmyshow/movie/initializer/StartupLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyShow/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie/movie/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,6 +38,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.BookmyshowApplication.executor": "Run",
+    "Maven.movie [clean,package].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
@@ -45,6 +46,59 @@
     "last_opened_file_path": "D:/My Learning Project/AzureProject"
   }
 }]]></component>
+  <component name="RunManager" selected="Maven.movie [clean,package]">
+    <configuration name="BookmyshowApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.bookmyshow.movie.BookmyshowApplication" />
+      <module name="movie" />
+      <option name="PROGRAM_PARAMETERS" value="mvn clean package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bookmyshow.movie.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="movie [clean,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/movie/movie" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.BookmyshowApplication" />
+      <item itemvalue="Maven.movie [clean,package]" />
+    </list>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
