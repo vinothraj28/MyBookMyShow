@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a80ad5a1-5e0c-4404-9700-feb1dbd3cc5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/bookmyshow/movie/initializer/StartupLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookMyShow/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/environments/environment.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/movie/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie/movie/src/main/java/com/bookmyshow/movie/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie/movie/src/main/java/com/bookmyshow/movie/configuration/SecurityConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +33,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BookmyshowApplication.executor": "Run",
-    "Maven.movie [clean,package].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/My Learning Project/AzureProject"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BookmyshowApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.movie [clean,package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/My Learning Project/AzureProject&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Maven.movie [clean,package]">
     <configuration name="BookmyshowApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />

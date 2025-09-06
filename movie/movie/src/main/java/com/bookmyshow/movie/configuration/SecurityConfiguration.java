@@ -21,7 +21,7 @@ public class SecurityConfiguration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200") // Angular dev server
+                        .allowedOrigins("http://localhost:4200", "https://wonderful-wave-00acf7003.1.azurestaticapps.net/") // Angular dev server
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
