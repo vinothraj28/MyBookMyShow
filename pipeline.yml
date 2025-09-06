@@ -63,8 +63,8 @@ stages:
 
           # Build & push image
           - script: |
-              docker build -t $(DOCKERHUB_USERNAME)/removino68:latest$(Build.BuildId) movie/movie
-              docker push $(DOCKERHUB_USERNAME)/removino68:latest$(Build.BuildId)
+              docker build -t $(DOCKERHUB_USERNAME)/removino68:latest$BUILD_BUILDID movie/movie
+              docker push $(DOCKERHUB_USERNAME)/removino68:latest$BUILD_BUILDID
             displayName: "Build and Push Docker Image"
 
           # Update Azure Container App with new image
@@ -77,7 +77,7 @@ stages:
                 az containerapp update \
                   --name vinothrajbackend \
                   --resource-group BackendDB \
-                  --image $(DOCKERHUB_USERNAME)/removino68:latest$(Build.BuildId)
+                  --image $(DOCKERHUB_USERNAME)/removino68:latest$BUILD_BUILDID
 
   - stage: Build_Frontend
     displayName: "Build Angular Frontend"
