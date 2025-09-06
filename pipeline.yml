@@ -63,8 +63,8 @@ stages:
 
           # Build & push image
           - script: |
-              docker build -t $(DOCKERHUB_USERNAME)/removino68:latest$BUILD_BUILDID movie/movie
-              docker push $(DOCKERHUB_USERNAME)/removino68:latest$BUILD_BUILDID
+              docker build -t $(DOCKERHUB_USERNAME)/movie-backend:latest$BUILD_BUILDID movie/movie
+              docker push $(DOCKERHUB_USERNAME)/movie-backend:latest$BUILD_BUILDID
             displayName: "Build and Push Docker Image"
 
           # Update Azure Container App with new image
