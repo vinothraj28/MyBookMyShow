@@ -56,12 +56,11 @@ stages:
     jobs:
       - job: DeployJava
         steps:
-
           - task: DownloadPipelineArtifact@2
-          inputs:
-            artifact: 'springboot-app'
-            path: 'movie/movie/target'
-            
+            inputs:
+              artifact: 'springboot-app'
+              path: 'movie/movie/target'
+
           # Login to Docker Hub
           - script: |
               echo "$(DOCKERHUB_PASSWORD)" | docker login -u "$(DOCKERHUB_USERNAME)" --password-stdin
