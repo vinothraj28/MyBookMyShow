@@ -49,6 +49,40 @@ stages:
               PathtoPublish: 'movie/movie/target/'
               ArtifactName: 'springboot-app'
               publishLocation: 'Container'
+  
+  - stage: Deploy_Backend
+    displayName: "Deploy Spring Boot Backend to Azure Container Apps"
+    dependsOn: Build_Backend
+    jobs:
+      - job: DeployJava
+        steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              artifact: 'springboot-app'
+              path: 'movie/movie/target'
+
+          # Login to Docker Hub
+          - script: |
+              echo "$(DOCKERHUB_PASSWORD)" | docker login -u "$(DOCKERHUB_USERNAME)" --password-stdin
+            displayName: "Login to Docker Hub"
+
+          # Build & push image
+          - script: |
+              docker build -t removino68/movie-backend:latest$BUILD_BUILDID movie/movie
+              docker push removino68/movie-backend:latest$BUILD_BUILDID
+            displayName: "Build and Push Docker Image"
+
+          # Update Azure Container App with new image
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: "AzureConnection"   # 👈 your service connection name
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az containerapp update \
+                  --name vinothrajbackend \
+                  --resource-group BackendDB \
+                  --image removino68/movie-backend:latest$BUILD_BUILDID
 
   - stage: Build_Frontend
     displayName: "Build Angular Frontend"
