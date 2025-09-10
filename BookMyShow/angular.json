@@ -26,7 +26,11 @@
                 "input": "public",
                 "output": "/"
               },
-              "src/staticwebapp.config.json"
+              {
+                "glob": "staticwebapp.config.json",
+                "input": "src/assets",
+                "output": "/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
@@ -97,7 +101,11 @@
                 "input": "public",
                 "output": "/"
               },
-              "src/staticwebapp.config.json"
+              {
+                "glob": "staticwebapp.config.json",
+                "input": "src/assets",
+                "output": "/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
