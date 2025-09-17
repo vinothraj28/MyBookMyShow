@@ -1,0 +1,166 @@
+#header-container{
+    background: linear-gradient(90deg, rgb(82, 125, 218) 0%, rgb(121, 112, 112, 0.08) 85%);
+    color: white;
+    flex-wrap: wrap;
+}
+
+#footer-container{
+    background: linear-gradient(90deg, rgb(82, 125, 218) 0%, rgb(121, 112, 112, 0.08) 95%);
+    color: white;
+    flex-wrap: wrap;
+    height: 10%;
+}
+
+.contact-info {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.contact-link {
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.contact-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd700;
+}
+
+
+.technologies-container{
+    padding: 20px;  
+    flex:1;
+    margin: auto;
+}
+
+.technologies-container .technologies{
+    padding: 5px 10px;
+    border: 1px solid rgb(82, 125, 218);
+    border-radius: 15%;
+    color: #444;
+}
+
+.technologies-scroll{
+    position: relative;
+    gap: 20px;
+    overflow: hidden;
+    height: 40px;
+    width: 100%;
+}
+
+.technologies-scroll span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        transition: transform 0s linear;
+}
+
+/**
+
+@keyframes bounce {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+*/
+
+.companies-container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.company-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.company{
+    border: 1px solid rgb(82, 125, 218);
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(81, 135, 197, 0.816);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+#achievements-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#role-description-container{
+        padding: 50px;
+        background: #fff;
+        border-radius: 12px;
+        font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.company-name {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+}
+
+#achievements{
+    list-style: none;
+    text-align: center;
+}
+
+#achievements li {
+    position: relative;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    color: #444;
+    opacity: 0;
+    /* start invisible */
+    transform: translateX(-50px);
+    /* start shifted left */
+    transition: all 0.6s ease;
+    /* smooth transition */
+}
+
+#achievements li.show{
+    opacity: 1;
+    transform: translate(0);
+}
+
+#achievements li::before {
+    content: "✔";
+    color: #27ae60;
+    font-weight: bold;
+    margin-right:5px ;
+}
+
+.timeline {
+    display: inline-block;
+    background: #2c3e50;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}

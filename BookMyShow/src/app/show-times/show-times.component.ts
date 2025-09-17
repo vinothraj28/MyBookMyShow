@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ShowTime } from '../Interfaces/ShowTime';
+import { ToastServiceService } from '../services/toastService/toast-service.service';
 
 @Component({
   selector: 'app-show-times',
@@ -28,7 +29,7 @@ import { ShowTime } from '../Interfaces/ShowTime';
 export class ShowTimesComponent {
 
   constructor(private showtimeService : ShowtimesService, private movieService : MovieService,
-    private theaterService : TheaterService, private userService : UserserviceService
+    private theaterService : TheaterService, private userService : UserserviceService, private toastService : ToastServiceService
   ){}
 
   showTimeForm = new FormGroup({
@@ -41,7 +42,7 @@ export class ShowTimesComponent {
   dateError : string ="";
   //get and store the available dates from backend
   availableDates : Date[] = [];
-  
+
   selectedDate:Date| null= null;
 
   //Get the Lits of movies from backend and save it
@@ -61,7 +62,7 @@ export class ShowTimesComponent {
   showEndTime! : Date | null;
 
   //Get the Selected ShowTime Movie details to display it in the FORM
-  showTimeMovie : movie | null= { 
+  showTimeMovie : movie | null= {
     id:0,
     name:'',
     language:'',
@@ -103,7 +104,7 @@ export class ShowTimesComponent {
               console.log(err)
             }
           })
-          
+
         })
       },
       error : err => {
@@ -190,18 +191,18 @@ export class ShowTimesComponent {
     if (! (dateValue instanceof Date)) {
       this.dateError = "Date is null or not a Date";
       return;
-    } 
+    }
 
     if(!dateValue) {
       this.dateError="Select a date"
       return
     }
-      
+
     if(! (this.availableDates.some( avail => new Date(avail).toDateString() === dateValue?.toDateString()))){
       this.dateError = "Select a Valid date";
       return;
     }
-    
+
     this.dateError = "";
 
     const formData = new FormData();
@@ -224,7 +225,7 @@ export class ShowTimesComponent {
   selectShowTime(event : ShowTime){
     console.log(event);
     this.showStartTime = event.startTime;
-    this.showEndTime = event.endTime;    
+    this.showEndTime = event.endTime;
   }
 
 
@@ -233,7 +234,7 @@ export class ShowTimesComponent {
     if (! (dateValue instanceof Date)) {
       this.dateError = "Date is null or not a Date";
       return;
-    } 
+    }
 
     const formData = {
       movieId : this.showTimeMovie?.id,

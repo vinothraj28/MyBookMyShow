@@ -1,0 +1,96 @@
+<div id="header-container" class="d-flex flex-column flex-md-row justify-content-between p-4"> 
+    <div class="text-center text-md-start profile-container">
+        <!-- Image Section -->
+        <div class="ms-4 ">
+            <img src="assets/Vinoth.jpeg" width="200" height="200" class="rounded-circle border shadow-sm"
+                style="object-fit: cover; object-position: 40% 0%;" />
+        </div>
+        <!-- Text Section -->
+        <h2 class="mb-2">Vinoth Raj Gopal</h2>
+        <p class="mb-0">Software Engineer with 7+ years of experience</p>
+        <p class="contact-info">
+            <a href="https://www.linkedin.com/in/vinoth-raj-g/" target="_blank" rel="noopener" class="contact-link">
+                <i class="fab fa-linkedin"></i>LinkedIn
+            </a>
+            <span> | </span>
+            <a href="mailto:removino68@gmail.com" class="contact-link">
+                <i class="fas fa-envelope"></i>Email: removino68&#64;gmail.com
+            </a>
+            <span> | </span>
+            <a routerLink="/base/theater" class="contact-link">
+                <i class="fas fa-play-circle"></i>Demo Project
+            </a>
+        </p>
+    </div>  
+    <!-- Skills Section -->
+    <div class="technologies-container">
+        <h2 class="mb-3">Technologies:</h2>
+        <div class="technologies-scroll" (mouseenter)="scrollTech=false" (mouseleave)="scrollTech=true" #scrollContainer>
+            <span class="technologies" *ngFor="let technology of technologies">
+                {{ technology }}
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="companies-container">
+    <h2 class="mb-3">Experiences:</h2>
+    <div class="company-container">
+        <div class="company mb-2 mb-md-0" *ngFor="let comp of companies">
+            <h4 class="mb-3" style="font-size: 1rem;">{{comp.name}}</h4>
+            <div class="mb-2 timeline">{{comp.timeLine}}</div>
+            <div class="mb-2">Role : {{comp.role}}</div>
+            <div>Location : {{comp.location}}</div>
+        </div>     
+    </div>
+    <div id="role-description-container">
+            <div id="achievements-container" class="card shadow p-4 m-4">
+                <h4 class="company-name">Wipro Technologies</h4>
+                    <ul id="achievements">
+                        <li #achievements>Migration of legacy web applications to the latest technology stacks.</li>
+                        <li #achievements>Java code update to meet the compatibility with the new versions.</li>
+                        <li #achievements>Setting up of servers and performing the required configuration changes.</li>
+                        <li #achievements>Development of Autosys/cron (Job schedulers) Jobs in the Linux servers.</li>
+                        <li #achievements>Analysis and resolution of issues encountered during the devlopment process on both server and application level.</li>
+                        <li #achievements>Involved in the deployment and release management activities of apps to the different staging environments.</li>
+                        <li #achievements>Played an essential role for consecutive Go-Live of 3 apps in the same week.</li>
+                    </ul>         
+            </div>
+            <div id="achievements-container" class="card shadow p-4 m-4">
+                <h4 class="company-name">Infosys Limited</h4>
+                <ul id="achievements">
+                    <li #achievements>Played as a developer and operations executive for multiple web applications built on AEM and used by million users across the
+                    European countries.</li>
+                    <li #achievements>Single handedly managed the operations and delivery support for a middleware application.</li>
+                    <li #achievements>Involved in design and solution discussions to implement business requirements.</li>
+                    <li #achievements>Managed the Load Balancer and CDN setup for the applications</li>
+                    <li #achievements>Acted as a point of contact to support the application integration with multiple other systems</li>
+                    <li #achievements>Organizing sessions and working with multiple Vendors/teams to meet the deliveries</li>
+                    <li #achievements>Worked together with the devops team on setting up CI/CD pipelines</li>
+                    <li #achievements>Resolving Issues/Incidents reported within the agreed SLAs on daily basis as part of support stream.
+                    </li>
+                </ul>
+            </div>
+            <div id="achievements-container" class="card shadow p-4 m-4">
+                <h4 class="company-name">Exact B.V.</h4>
+                <ul id="achievements">
+                    <li #achievements>Planned and implemented the integration of the Salesforce Personalization tool with web applications developed or
+                    acquired by Exact</li>
+                    <li #achievements>Created various HTML templates, including popups, callouts, intrusive elements, banners, and dropdowns, to support web
+                    campaigns.</li>
+                    <li #achievements>Executed Salesforce Marketing Tools to deliver personalized experiences and engage users across the product.</li>
+                    <li #achievements>Writing complex SQL queries to validate or create user data extensions( tables ).</li>
+                    <li #achievements>Debugged front-end issues and provided optimal solutions</li>
+                    <li #achievements>Innovated and developed new product features that understand user behavior and present relevant options for each user.</li>
+                    <li #achievements>Gathered requirements from stakeholders and led small-scale projects to successful go-live.</li>
+                    <li #achievements>Leveraged frontend technologies to successfully integrate the Salesforce Personalization tool with Exact, Gripp, and
+                    Bouw.
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
+<div id="footer-container" class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+    <p>Thanks for checking out my portfolio</p>
+
+</div>

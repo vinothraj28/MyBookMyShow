@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a80ad5a1-5e0c-4404-9700-feb1dbd3cc5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BookMyShow/src/assets/staticwebapp.config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookMyShow/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookMyShow/src/app/show-times/show-times.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BookMyShow/src/app/show-times/show-times.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

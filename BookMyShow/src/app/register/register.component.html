@@ -33,7 +33,7 @@
 
           <div class="mb-2">
             <label for="dob" class="form-label">Date of Birth</label>
-            <input id="dob" type="date" class="form-control border-dark text-dark rounded-3" formControlName="dob" autocomplete="bday">
+            <input id="dob" type="date" class="form-control border-dark text-dark rounded-3" formControlName="dob" [max]="today">
             <span class="text-warning" *ngIf="registerForm.get('dob')?.touched && registerForm.get('dob')?.invalid">DOB is required</span>
           </div>
 

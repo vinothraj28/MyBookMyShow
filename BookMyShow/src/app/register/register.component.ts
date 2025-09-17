@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../services/loginService/login.service';
+import { ToastServiceService } from '../services/toastService/toast-service.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -12,12 +13,15 @@ import { CommonModule } from '@angular/common';
 })
 export class RegisterComponent {
 
+  today!: string;
   // to check form values and status
   ngOnInit() {
     this.registerForm.statusChanges.subscribe(status => {
       console.log("Form status:", status);
       console.log("Form values:", this.registerForm.value);
     });
+    this.today = this.getDate();
+    console.log("today", this.today);
   }
 
    countries : string[] = ['Netherlands', 'India', 'Germany', 'US'];
@@ -31,7 +35,8 @@ export class RegisterComponent {
     country : new FormControl('', [Validators.required])
   });
 
-  constructor(private loginService : LoginService, private router : Router){}
+  constructor(private loginService : LoginService, private router : Router
+    , private toastService : ToastServiceService){}
 
 
   onRegister():void{
@@ -53,17 +58,26 @@ export class RegisterComponent {
     }
 
     console.log(formData);
-    
+
     this.loginService.register(formData).subscribe({
       next: response => {
         console.log("User registered", response);
+        this.router.navigate(['/login']);
+        this.toastService.displayMessage("User Registered Successfully", "success");
       },
       error : error => {
         console.log("Error", error)
+        this.toastService.displayMessage("User Registeration failed", "danger");
       }
     });
 
   }
 
+  getDate(): string {
+        const now = new Date();
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        return `${now.getFullYear()}-${month}-${day}`;
+      }
 
 }

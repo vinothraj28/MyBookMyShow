@@ -11,10 +11,12 @@ import { MovieComponent } from './movie/movie.component';
 import { ShowTimesComponent } from './show-times/show-times.component';
 import { BookingPageComponent } from './booking-page/booking-page.component';
 import { TicketDownloadComponent } from './ticket-download/ticket-download.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 export const routes: Routes = [
 
     {path:'' , redirectTo:'login', pathMatch:'full'},
+    {path:'portfolio', component:PortfolioComponent},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},
     {path:'base', component:BaseComponent,  canActivate: [authGuard],
